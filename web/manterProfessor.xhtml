@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastrar Usuário</title>
+        <!--  Favicon / -->
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}css.css" />
+        <link rel="stylesheet" href="css/gumby.css"/>   <!-- Gumby Framework /-->
+        <link rel="stylesheet" href="css/style.css"/>   <!-- Main stylesheet /-->
+    </h:head>
+    <h:body>
+        <h:link value="Menu Principal" class="button2" outcome="index.html"/>
+        <br/>
+        <br/>
+        <h3>Cadastro de Professor</h3>
+        <br/>
+        <h:form id="formProfessor" class="form-horizontal">
+            <h:inputHidden value="#{professorBean.professor.id}"/>
+            <div class="control-group">
+                <div class="controls">
+                    Tipo *: <h:inputText id="tipo" value="#{professorBean.professor.tipo}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="tipo"/>
+                </div>
+             </div>
+             <div class="control-group">
+                <div class="controls">
+                    Nome *: <h:inputText id="nome" value="#{professorBean.professor.nome}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="nome"/>
+                </div>
+             </div>
+            <div class="control-group">
+                <div class="controls">
+                    Login *: <h:inputText id="login" value="#{professorBean.professor.login}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="login"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    Senha *: <h:inputSecret id="senha" value="#{professorBean.professor.senha}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="senha"/>
+                </div>
+            </div>
+            
+            <h:messages for="formProfessor"/><br/>
+
+            <h:commandButton value="Inserir" class="button2" action="#{professorBean.inserir()}"/>
+
+            <h:commandButton value="Alterar" class="button2" action="#{professorBean.alterar()}"/>
+
+            <h:commandButton value="Excluir" class="button2" action="#{professorBean.excluir()}"/>
+
+        </h:form>
+        <br/>
+        <h:dataTable value="#{professorBean.professor}" var="alun" border="1">
+            <h:column>
+                <f:facet name="header"><h:outputText value="ID" /></f:facet>
+                <h:outputText value="#{alun.id}"/>
+            </h:column>
+             <h:column>
+                <f:facet name="header"><h:outputText value="Tipo" /></f:facet>
+                <h:outputText value="#{professorBean.professor.tipo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="NOME" /></f:facet>
+                <h:form>
+                    <h:commandLink value="#{alun.nome}">                     
+                        <f:setPropertyActionListener target="#{professorBean.professor}" value="#{alun}"/>
+                    </h:commandLink>
+                </h:form>
+            </h:column>
+           
+            <h:column>
+                <f:facet name="header"><h:outputText value="Login" /></f:facet>
+                <h:outputText value="#{alun.login}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Senha" /></f:facet>
+                <h:outputText value="#{alun.senha}"/>
+            </h:column>
+        </h:dataTable>
+   
+    </h:body>
+</html>

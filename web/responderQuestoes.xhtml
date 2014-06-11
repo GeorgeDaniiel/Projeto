@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Responder Questões</title>
+        <!--  Favicon / -->
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}css.css" />
+        <link rel="stylesheet" href="css/gumby.css"/>   <!-- Gumby Framework /-->
+        <link rel="stylesheet" href="css/style.css"/>   <!-- Main stylesheet /-->
+    </h:head>
+    <h:body>
+        <h:form>    
+            <p:dataTable id="questaoTabela" value="#{questoesBean.questoeses}" emptyMessage="Não há registros" var="questao" paginator="true" rows="5">
+                <p:column headerText="Descrição">
+                    <h:outputText value="#{questao.descricao}"/>
+                </p:column>
+                <p:column headerText="Alternativa A">
+                    <h:commandLink value="#{questao.alternativaa}" action="#{questoesBean.verificarResposta()}">                     
+                        <f:setPropertyActionListener target="#{questoesBean.alternativaCorreta}" value="1"/>
+                        <f:setPropertyActionListener target="#{questoesBean.questoes}" value="#{questao}"/>
+                    </h:commandLink>
+                </p:column>
+                <p:column headerText="Alternativa B">
+                   <h:commandLink value="#{questao.alternativab}" action="#{questoesBean.verificarResposta()}">                         
+                        <f:setPropertyActionListener target="#{questoesBean.alternativaCorreta}" value="2"/>
+                        <f:setPropertyActionListener target="#{questoesBean.questoes}" value="#{questao}"/>
+                    </h:commandLink>
+                </p:column>
+                <p:column headerText="Alternativa C">
+                    <h:commandLink value="#{questao.alternativac}" action="#{questoesBean.verificarResposta()}">                         
+                        <f:setPropertyActionListener target="#{questoesBean.alternativaCorreta}" value="3"/>
+                        <f:setPropertyActionListener target="#{questoesBean.questoes}" value="#{questao}"/>
+                    </h:commandLink>
+                </p:column>
+                <p:column headerText="Alternativa D">
+                    <h:commandLink value="#{questao.alternativad}" action="#{questoesBean.verificarResposta()}">                         
+                        <f:setPropertyActionListener target="#{questoesBean.alternativaCorreta}" value="4"/>
+                        <f:setPropertyActionListener target="#{questoesBean.questoes}" value="#{questao}"/>
+                    </h:commandLink>
+                </p:column>
+            </p:dataTable>
+            <h:messages for="formQuestoes"/><br/>
+        </h:form>
+    </h:body>
+</html>
+

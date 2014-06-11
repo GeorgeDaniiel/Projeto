@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastro de Questoes</title>
+        <!--  Favicon / -->
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}css.css" />
+        <link rel="stylesheet" href="css/gumby.css"/>   <!-- Gumby Framework /-->
+        <link rel="stylesheet" href="css/style.css"/>   <!-- Main stylesheet /-->
+    </h:head>
+    <h:body>
+        <h:link value="Menu Principal" outcome="index.html"/>
+        <br/>
+        <br/>
+        <h3>Cadastro de Questoes</h3>
+        <br/>
+        <h:form id="formQuestoes" class="form-horizontal">
+            <h:inputHidden value="#{questoesBean.questoes.id}"/>
+            <div class="control-group">
+                <div class="controls">
+                    Descrição *: <h:inputText id="descricao" value="#{questoesBean.questoes.descricao}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="descricao"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    Alternativa A*: <h:inputText id="altenativaA" value="#{questoesBean.questoes.alternativaa}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="altenativaA"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    Alternativa B*: <h:inputText id="altenativaB" value="#{questoesBean.questoes.alternativab}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="altenativaB"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    Alternativa C*: <h:inputText id="altenativaC" value="#{questoesBean.questoes.alternativac}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="altenativaC"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    Alternativa D*: <h:inputText id="altenativaD" value="#{questoesBean.questoes.alternativad}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="altenativaD"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    Alternativa Correta*: <h:inputText id="altenativaCorreta" value="#{questoesBean.questoes.alternativaCorreta}" required="true" requiredMessage="Campo Obrigatório"/><br/>
+                    <h:message for="altenativaCorreta"/>
+                </div>
+            </div>
+            
+            <h:messages for="formQuestoes"/><br/>
+
+            <h:commandButton value="Inserir" class="button2" action="#{questoesBean.inserir()}"/>
+
+            <h:commandButton value="Alterar" class="button2" action="#{questoesBean.alterar()}"/>
+
+            <h:commandButton value="Excluir" class="button2" action="#{questoesBean.excluir()}"/>
+
+        </h:form>
+        <br/>
+        <h:dataTable value="" var="quest" border="1">
+            <h:column>
+                <f:facet name="header"><h:outputText value="ID" /></f:facet>
+                <h:outputText value=""/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Descricao" /></f:facet>
+                <h:outputText value="#{questoesBean.questoes.descricao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Alternativa A" /></f:facet>
+                <h:outputText value="#{questoesBean.questoes.alternativaa}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Alternativa B" /></f:facet>
+                <h:outputText value="#{questoesBean.questoes.alternativab}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Alternativa C" /></f:facet>
+                <h:outputText value="#{questoesBean.questoes.alternativac}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Alternativa D" /></f:facet>
+                <h:outputText value="#{questoesBean.questoes.alternativad}"/>
+            </h:column>
+        </h:dataTable>
+   
+    </h:body>
+</html>
+
